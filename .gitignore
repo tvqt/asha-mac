@@ -1,0 +1,7 @@
+# Build output
+build/
+driver/build/
+# Bluetooth traces contain hearing-aid addresses and PAIRING KEYS: never commit them
+traces/
+*.pklg
+.DS_Store

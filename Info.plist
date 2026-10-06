@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Info.plist = a small "settings file" that macOS reads to learn about a program.
+  A command-line tool normally doesn't have one. But macOS's privacy system (TCC)
+  wants every program that uses Bluetooth to explain WHY, using the
+  NSBluetoothAlwaysUsageDescription key below. Without it, macOS may kill the
+  program the moment it touches Bluetooth.
+
+  build.sh glues this file into the compiled program itself (a linker section
+  called __TEXT,__info_plist), so macOS can find it even though there's no
+  .app bundle around the program.
+-->
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleIdentifier</key>
+    <string>local.asha.tools</string>
+    <key>CFBundleName</key>
+    <string>asha-tools</string>
+    <key>NSAudioCaptureUsageDescription</key>
+    <string>asha-stream captures the audio your Mac is playing and sends it to your hearing aids.</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>asha-service reads the audio played to the "Hearing Aids" output device so it can send it to your hearing aids.</string>
+    <key>NSBluetoothAlwaysUsageDescription</key>
+    <string>These ASHA tools talk to your hearing aids over Bluetooth LE.</string>
+</dict>
+</plist>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  bluetoothd debug settings (domain com.apple.MobileBluetooth.debug), found by disassembling
+  /usr/sbin/bluetoothd (macOS 26.5.2). It reads config as (section, key) pairs; section "LE" here.
+  LeConnectionLatencyLow{Min,Max}Interval: the interval range bluetoothd uses when an app asks for
+  "low" connection latency (level 0 of the private setDesiredConnectionLatency). Units are MILLISECONDS (verified 2026-10-06: value 16 gave "new connection parameters interval 15ms-15ms", i.e. 16 ms rounded down to a 1.25 ms multiple). Earlier guess of 1.25 ms units was wrong;
+  bluetoothd rejects values below 8. 20 = 20 ms, ASHA interval.
+  Import:  sudo defaults import /Library/Preferences/com.apple.MobileBluetooth.debug <this file>
+  Remove:  sudo defaults delete /Library/Preferences/com.apple.MobileBluetooth.debug
+  Either way, then: sudo pkill bluetoothd
+-->
+<plist version="1.0">
+<dict>
+    <key>LE</key>
+    <dict>
+        <key>LeConnectionLatencyLowMinInterval</key>
+        <integer>20</integer>
+        <key>LeConnectionLatencyLowMaxInterval</key>
+        <integer>20</integer>
+    </dict>
+</dict>
+</plist>
