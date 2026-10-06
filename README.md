@@ -76,7 +76,7 @@ xcode-select --install
 (If it says the tools are already installed, that's fine.)
 
 ```sh
-git clone https://github.com/<you>/asha-mac.git
+git clone https://github.com/tvqt/asha-mac.git
 cd asha-mac
 ./build.sh
 ```
